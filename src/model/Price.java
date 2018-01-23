@@ -24,7 +24,7 @@ public class Price {
             System.out.println(product.title()
                             + ", list price=" + product.price().toPlainString()
                             + ", quantity=" + fragment.item().quantity()
-                            + ", effective price=" + fragment.subtotal().toPlainString());
+                            + ", effective subtotal=" + fragment.subtotal().toPlainString());
         }
         System.out.println("----------------");
         System.out.println("Total: " + total().toPlainString());
