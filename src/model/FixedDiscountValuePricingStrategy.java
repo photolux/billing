@@ -9,7 +9,7 @@ public class FixedDiscountValuePricingStrategy implements PricingStrategy {
     }
 
     @Override
-    public Price apply(Order order) {
+    public Price applyTo(Order order) {
         Price price = new Price();
 
         order.items().stream().forEach(item -> price.addFragment(item, subtotal(item)));

@@ -23,7 +23,7 @@ public class Order {
     }
 
     public Price total() {
-        return pricingStrategy.apply(this);
+        return pricingStrategy.applyTo(this);
     }
 
     static class OrderItem {
