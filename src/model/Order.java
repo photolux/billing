@@ -1,5 +1,8 @@
 package model;
 
+import model.pricing.PricingStrategy;
+import model.pricing.SubtotalBasedPricingStrategy;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -9,9 +12,13 @@ public class Order {
 
     private Collection<OrderItem> items;
 
-    public Order(PricingStrategy pricingStrategy) {
-        this.pricingStrategy = pricingStrategy;
+    public Order() {
+        pricingStrategy = new SubtotalBasedPricingStrategy();
         items = new ArrayList<>();
+    }
+
+    public void changePricingStrategyTo(PricingStrategy strategy) {
+        this.pricingStrategy = strategy;
     }
 
     public Collection<OrderItem> items() {
@@ -26,26 +33,4 @@ public class Order {
         return pricingStrategy.applyTo(this);
     }
 
-    static class OrderItem {
-
-        private Product product;
-        private int quantity;
-
-        OrderItem(Product product, int quantity) {
-            this.product = product;
-            this.quantity = quantity;
-        }
-
-        Money subtotal() {
-            return product.price().mult(quantity);
-        }
-
-        Product product() {
-            return product;
-        }
-
-        public int quantity() {
-            return quantity;
-        }
-    }
 }

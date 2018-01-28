@@ -3,13 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import static model.Order.OrderItem;
-
 public class Price {
 
     private List<PriceFragment> fragments = new ArrayList<>();
 
-    public void addFragment(Order.OrderItem orderItem, Money subtotal) {
+    public void addFragment(OrderItem orderItem, Money subtotal) {
         fragments.add(new PriceFragment(orderItem, subtotal));
     }
 
@@ -28,25 +26,6 @@ public class Price {
         }
         System.out.println("----------------");
         System.out.println("Total: " + total().toPlainString());
-    }
-
-    public class PriceFragment {
-
-        private OrderItem orderItem;
-        private Money subtotal;
-
-        public PriceFragment(Order.OrderItem orderItem, Money subtotal) {
-            this.orderItem = orderItem;
-            this.subtotal = subtotal;
-        }
-
-        public OrderItem item() {
-            return orderItem;
-        }
-
-        public Money subtotal() {
-            return subtotal;
-        }
     }
 
 }
