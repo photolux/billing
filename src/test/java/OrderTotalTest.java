@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertEquals;
 
 public class OrderTotalTest {
 
-    Order order;
+    private Order order;
 
     @Before
     public void anOrder() {
@@ -24,7 +24,6 @@ public class OrderTotalTest {
 
     @Test
     public void defaultPricing() throws Exception {
-
         Price price = order.total();
         assertEquals(Money.of(200.0), price.total());
     }
